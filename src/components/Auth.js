@@ -10,23 +10,30 @@ export const Auth = () => {
         reset();
     }
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-3">
-                <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="name@example.com" {...register('email', {
-                    required: 'Заполните форму'
-                })}/>
-            </div>
-            <div className="mb-3 row">
-                <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Password</label>
-                <div className="col-sm-10">
-                    <input type="password" className="form-control" id="inputPassword" {...register('password', {
-                        required: 'Заполните форму'
-                    })}/>
+        <section className="container">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="col-12">
+                    <label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email</label>
+                    <div className="col-sm-10">
+                        <input type="text" className="form-control" id="inputEmail" {...register('email', {
+                            required: 'Заполните форму'
+                        })}/>
+                    </div>
                 </div>
-            </div>
-            <div>{errors?.password && <p>{errors?.password.message || 'Error'}</p>}</div>
-            <input type='submit' />
-        </form>
+                <div className='col-12'>{errors?.email && <p>{errors?.email.message || 'Error'}</p>}</div>
+                
+                <div className="col-12">
+                    <label htmlFor="inputPassword" className="col-sm-2 col-form-label">Password</label>
+                    <div className="col-sm-10">
+                        <input type="text" className="form-control" id="inputPassword" {...register('password', {
+                            required: 'Заполните форму'
+                        })}/>
+                    </div>
+                </div>
+                <div className='col-12'>{errors?.password && <p>{errors?.password.message || 'Error'}</p>}</div>
+                
+                <button type="submit" className="btn btn-success">Enter</button>
+            </form>
+        </section>
     )
 }

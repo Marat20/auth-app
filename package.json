@@ -21,6 +21,9 @@
   "homepage": "https://github.com/Marat20/auth-app#readme",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.7.0",
     "@reduxjs/toolkit": "^1.8.1",
     "bootstrap": "^5.1.3",
     "react": "^18.1.0",
