@@ -1,17 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
+import { Link, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useGetUsersQuery } from "../redux/usersApi";
+import { v4 as uuidv4 } from 'uuid';
 
-export const Auth = () => {
+export const Login = () => {
     const {register, handleSubmit, formState: { errors }, reset} = useForm({mode: 'onBlur'});
+    const {data, isLoading} = useGetUsersQuery(user);
+    const [user, setUser] = useState('');
 
     const onSubmit = data => {
-        console.log(data);
+        const user = {
+            ...data, 
+            id: uuidv4()
+        };
         reset();
-    }
+    };
+
     return (
         <section className="container">
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <h1>Login</h1>
+        <Link to='/register'>Register</Link>
+            <form action="/">
+                <input type='text' placeholder="Email"/>
+                <input type='text' placeholder="Password"/>
+                <input type='submit'/>
+            </form>
+            <form onSubmit={handleSubmit(onSubmit)} method='POST' action='/'>
                 <div className="col-12">
                     <label htmlFor="inputEmail" className="col-sm-2 col-form-label">Email</label>
                     <div className="col-sm-10">
